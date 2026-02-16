@@ -5,9 +5,6 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 MERGED="$SCRIPT_DIR/merged.py"
 
-# Unset CLAUDECODE to allow running inside a Claude Code session
-unset CLAUDECODE 2>/dev/null || true
-
 echo "Building ai-mergetool..."
 cargo build --manifest-path "$PROJECT_DIR/Cargo.toml" --quiet
 
