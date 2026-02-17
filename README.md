@@ -42,7 +42,10 @@ On first run, a default config is generated at `~/.ai-mergetool-config.json`:
 ```json
 {
   "agent_command": "claude",
-  "agent_args": ["--print", "-"],
+  "agent_args": [
+    "--dangerously-skip-permissions",
+    "-"
+  ],
   "strategy_file": null,
   "default_strategy": "Try to resolve conflicts in a way that the REMOTE changes are preserved as much as possible.",
   "fallback_merge_tool": null
