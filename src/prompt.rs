@@ -1,7 +1,7 @@
 use crate::config::Config;
 use std::path::Path;
 
-pub fn build(config: &Config, base: &Path, local: &Path, remote: &Path) -> Result<String, String> {
+pub fn build(config: &Config, base: &Path, local: &Path, remote: &Path, merged: &Path) -> Result<String, String> {
     let strategy = match &config.strategy_file {
         Some(path) => std::fs::read_to_string(path)
             .map_err(|e| format!("Failed to read strategy file '{}': {}", path, e))?,
@@ -14,6 +14,7 @@ pub fn build(config: &Config, base: &Path, local: &Path, remote: &Path) -> Resul
         .map_err(|e| format!("Failed to read LOCAL '{}': {}", local.display(), e))?;
     let remote_content = std::fs::read_to_string(remote)
         .map_err(|e| format!("Failed to read REMOTE '{}': {}", remote.display(), e))?;
+    let merged_path = merged.display();
 
     Ok(format!(
         r#"# Merge Strategy
@@ -40,6 +41,8 @@ pub fn build(config: &Config, base: &Path, local: &Path, remote: &Path) -> Resul
 ## Instructions
 
 Merge the LOCAL and REMOTE changes relative to BASE, following the strategy above.
-Output ONLY the merged file content. No explanation, no markdown fences, no extra text."#
+Write the merged result directly to the file: {merged_path}
+Do NOT ask for user confirmation. Do NOT output the merged file content to stdout.
+Describe the changes you made."#
     ))
 }

@@ -18,7 +18,7 @@ impl Default for Config {
     fn default() -> Self {
         Self {
             agent_command: "claude".to_string(),
-            agent_args: vec!["--print".to_string(), "-".to_string()],
+            agent_args: vec!["--dangerously-skip-permissions".to_string(), "-".to_string()],
             strategy_file: None,
             default_strategy: DEFAULT_STRATEGY.to_string(),
             fallback_merge_tool: None,

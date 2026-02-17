@@ -37,7 +37,7 @@ fn main() {
         cli.remote.display()
     );
 
-    let prompt = match prompt::build(&config, &cli.base, &cli.local, &cli.remote) {
+    let prompt = match prompt::build(&config, &cli.base, &cli.local, &cli.remote, &cli.merged) {
         Ok(p) => p,
         Err(e) => {
             eprintln!("Error building prompt: {}", e);
@@ -47,14 +47,13 @@ fn main() {
 
     match agent::invoke(&config, &prompt) {
         Ok(result) => {
+            println!("{}", result.stdout);
+
             let local_content =
                 std::fs::read_to_string(&cli.local).unwrap_or_default();
-            diff::print_colored_diff(&local_content, &result.stdout);
-
-            if let Err(e) = std::fs::write(&cli.merged, &result.stdout) {
-                eprintln!("Error writing merged file: {}", e);
-                process::exit(1);
-            }
+            let merged_content =
+                std::fs::read_to_string(&cli.merged).unwrap_or_default();
+            diff::print_colored_diff(&local_content, &merged_content);
 
             eprintln!("Merge result written to {}", cli.merged.display());
         }
