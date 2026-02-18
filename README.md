@@ -2,9 +2,9 @@
 
 A git merge tool that delegates conflict resolution to an AI agent.
 
-`ai-mergetool` follows the standard [git mergetool](https://git-scm.com/docs/git-mergetool) interface, receiving BASE, LOCAL, REMOTE, and MERGED file paths. It builds a prompt from the three input files and a configurable merge strategy, pipes it to an AI agent CLI (e.g. `claude`), and writes the resolved output to the MERGED file. If the agent fails, it falls back to a traditional merge tool.
+![ai-mergetool](https://github.com/user-attachments/assets/8117aead-3641-40c5-ab68-2727d5e09e8e)
 
-![ai-mergetool](https://github.com/user-attachments/assets/969a6f5b-e927-4da6-a117-7381a1d33221)
+`ai-mergetool` follows the standard [git mergetool](https://git-scm.com/docs/git-mergetool) interface, receiving BASE, LOCAL, REMOTE, and MERGED file paths. It builds a prompt from the three input files and a configurable merge strategy, pipes it to an AI agent CLI (e.g. `claude`), and writes the resolved output to the MERGED file. If the agent fails, it falls back to a traditional merge tool.
 
 ## Git integration
 
