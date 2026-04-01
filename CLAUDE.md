@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Requirements
 
-This is a command line tool (ai-mergetool) that has the same command line input interface as a mergetool (like kdfiff3, meld, etc) receiving as arguments the paths to the files involved in a git conflict resolution process (https://git-scm.com/docs/git-mergetool):
+This is a command line tool (ai-mergetool) that has the same command line input interface as a mergetool (like kdfiff3, meld, etc) receiving as arguments the paths to the files involved in a git conflict resolution process (https://git-scm.com/docs/git-mergetool):cccc
 
 > the configured command line will be invoked with BASE set to the name of a temporary file containing the common base for the merge, if available; LOCAL set to the name of a temporary file containing the contents of the file on the current branch; REMOTE set to the name of a temporary file containing the contents of the file to be merged, and MERGED set to the name of the file to which the merge tool should write the result of the merge resolution.
 
